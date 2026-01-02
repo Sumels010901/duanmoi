@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    show-sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/worktime_analytics
+    username: worktime_user
+    password: worktime_pass
+
+logging:
+  level:
+    com.worktime: DEBUG
