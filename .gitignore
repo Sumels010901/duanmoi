@@ -1,0 +1,23 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Backend
+backend/target/
+backend/.mvn/
+
+# Android
+android-app/.gradle/
+android-app/build/
+android-app/local.properties
+
+# Frontend
+web-frontend/node_modules/
+web-frontend/build/
+
+# OS
+.DS_Store
+
+# Environment
+.env
