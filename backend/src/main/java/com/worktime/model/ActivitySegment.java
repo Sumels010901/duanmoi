@@ -1,6 +1,7 @@
 package com.worktime.model;
 
 import com.worktime.model.enums.TimeSegmentType;
+import com.worktime.shared.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,13 +25,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActivitySegment {
-
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
-    private UUID id;
+public class ActivitySegment extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "session_id", nullable = false)
@@ -69,9 +64,6 @@ public class ActivitySegment {
 
     @Column(nullable = false)
     private Boolean isSplit;  // Was this split from a larger session?
-
-    @Column(nullable = false)
-    private Instant createdAt;
 
     /**
      * Get duration as Duration object.

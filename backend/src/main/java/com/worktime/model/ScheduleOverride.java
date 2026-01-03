@@ -1,13 +1,12 @@
 package com.worktime.model;
 
 import com.worktime.model.enums.OverrideType;
+import com.worktime.shared.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.UUID;
 
 /**
  * Entity representing exceptions to the regular working schedule.
@@ -21,13 +20,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ScheduleOverride {
-
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
-    private UUID id;
+public class ScheduleOverride extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private LocalDate date;
@@ -36,9 +29,9 @@ public class ScheduleOverride {
     @Column(nullable = false)
     private OverrideType overrideType;
 
-    private LocalTime customStartTime;
+    private Instant customStartTime;
 
-    private LocalTime customEndTime;
+    private Instant customEndTime;
 
     private String reason;
 }

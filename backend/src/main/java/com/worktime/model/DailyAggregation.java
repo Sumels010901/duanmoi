@@ -1,6 +1,7 @@
 package com.worktime.model;
 
 import com.worktime.model.enums.DayType;
+import com.worktime.shared.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -23,13 +24,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DailyAggregation {
-
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
-    private UUID id;
+public class DailyAggregation extends BaseEntity {
 
     @Column(nullable = false)
     private String userId;

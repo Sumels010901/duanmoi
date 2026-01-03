@@ -1,10 +1,12 @@
 package com.worktime.model;
 
+import com.worktime.shared.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.DayOfWeek;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.UUID;
@@ -23,13 +25,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorkingSchedule {
-
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(updatable = false, nullable = false)
-    private UUID id;
+public class WorkingSchedule extends BaseEntity {
 
     @Column(nullable = false)
     private String userId;
@@ -39,10 +35,10 @@ public class WorkingSchedule {
     private DayOfWeek dayOfWeek;
 
     @Column(nullable = false)
-    private LocalTime startTime;
+    private Instant startTime;
 
     @Column(nullable = false)
-    private LocalTime endTime;
+    private Instant endTime;
 
     @Column(nullable = false)
     private String timezone;  // Store as String (e.g., "Asia/Ho_Chi_Minh")
@@ -51,7 +47,7 @@ public class WorkingSchedule {
     @Builder.Default
     private Boolean isActive = true;
 
-    private LocalDate effectiveFrom;
+    private Instant effectiveFrom;
 
-    private LocalDate effectiveTo;
+    private Instant effectiveTo;
 }
