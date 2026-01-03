@@ -70,4 +70,13 @@ public interface ActivitySessionRepository extends JpaRepository<ActivitySession
      * @return list of unprocessed activity sessions for the user
      */
     List<ActivitySession> findByUserIdAndProcessedFalse(String userId);
+
+    /**
+     * Find activity session by Health Connect record ID.
+     * Used for duplicate detection during ingestion.
+     *
+     * @param healthConnectRecordId the Health Connect record ID
+     * @return optional containing the activity session if found
+     */
+    Optional<ActivitySession> findByHealthConnectRecordId(String healthConnectRecordId);
 }
