@@ -21,6 +21,7 @@ import java.util.UUID;
     @Index(name = "idx_daily_agg_day_type", columnList = "dayType")
 })
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

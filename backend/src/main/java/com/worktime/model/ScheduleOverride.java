@@ -17,6 +17,7 @@ import java.time.LocalDate;
     @Index(name = "idx_schedule_override_date", columnList = "date")
 })
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

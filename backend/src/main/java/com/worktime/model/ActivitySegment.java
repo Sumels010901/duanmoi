@@ -22,6 +22,7 @@ import java.util.UUID;
     @Index(name = "idx_activity_segment_session", columnList = "session_id")
 })
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

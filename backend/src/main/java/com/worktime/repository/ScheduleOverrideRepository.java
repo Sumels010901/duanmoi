@@ -47,4 +47,14 @@ public interface ScheduleOverrideRepository extends JpaRepository<ScheduleOverri
      * @return list of schedule overrides within the date range
      */
     List<ScheduleOverride> findByDateBetween(LocalDate startDate, LocalDate endDate);
+
+    /**
+     * Find all non-deleted schedule overrides within a date range.
+     * Used by ScheduleManagementService to retrieve active schedule overrides.
+     *
+     * @param startDate the start date (inclusive)
+     * @param endDate the end date (inclusive)
+     * @return list of non-deleted schedule overrides within the date range
+     */
+    List<ScheduleOverride> findByDateBetweenAndIsDeletedFalse(LocalDate startDate, LocalDate endDate);
 }

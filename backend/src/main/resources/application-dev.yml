@@ -4,8 +4,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/worktime_analytics
-    username: worktime_user
-    password: worktime_pass
+    username: wta_admin
+    password: thangdang
 
 logging:
   level:

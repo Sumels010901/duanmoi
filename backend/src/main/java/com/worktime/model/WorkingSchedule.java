@@ -22,6 +22,7 @@ import java.util.UUID;
     @Index(name = "idx_working_schedule_active", columnList = "isActive")
 })
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

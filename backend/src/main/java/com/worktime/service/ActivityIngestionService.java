@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -219,6 +220,25 @@ public class ActivityIngestionService {
         List<ActivitySession> sessions = activitySessionRepository.findByUserId(userId);
 
         return sessions.stream()
+                .map(DtoMapper::toDto)
+                .toList();
+    }
+
+    /**
+     * Get all activity sessions for a user within a time range.
+     *
+     * @param userId the user ID
+     * @param startTime the start time
+     * @param endTime the end time
+     * @return list of activity session responses
+     */
+    @Transactional(readOnly = true)
+    public List<ActivitySessionResponse> getSessionsByUserAndTimeRange(
+            String userId, Instant startTime, Instant endTime) {
+        log.debug("Fetching sessions for user: {} from {} to {}", userId, startTime, endTime);
+
+        return activitySessionRepository.findByStartTimeBetween(startTime, endTime).stream()
+                .filter(session -> session.getUserId().equals(userId))
                 .map(DtoMapper::toDto)
                 .toList();
     }

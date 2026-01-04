@@ -56,4 +56,13 @@ public interface WorkingScheduleRepository extends JpaRepository<WorkingSchedule
      * @return optional containing the working schedule if found
      */
     Optional<WorkingSchedule> findByUserIdAndDayOfWeek(String userId, DayOfWeek dayOfWeek);
+
+    /**
+     * Find all active and non-deleted working schedules for a specific user.
+     * Used by ScheduleManagementService to retrieve user's current schedule configuration.
+     *
+     * @param userId the user ID to search for
+     * @return list of active, non-deleted working schedules for the user
+     */
+    List<WorkingSchedule> findByUserIdAndIsActiveTrueAndIsDeletedFalse(String userId);
 }

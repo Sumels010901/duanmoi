@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -79,4 +80,13 @@ public interface ActivitySessionRepository extends JpaRepository<ActivitySession
      * @return optional containing the activity session if found
      */
     Optional<ActivitySession> findByHealthConnectRecordId(String healthConnectRecordId);
+
+    /**
+     * Check if an activity session exists with the given Health Connect record ID.
+     * Used for efficient duplicate detection during batch ingestion.
+     *
+     * @param healthConnectRecordId the Health Connect record ID
+     * @return true if a session with the record ID exists, false otherwise
+     */
+    boolean existsByHealthConnectRecordId(String healthConnectRecordId);
 }

@@ -24,6 +24,7 @@ import java.util.UUID;
     @Index(name = "idx_activity_session_processed", columnList = "processed")
 })
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
